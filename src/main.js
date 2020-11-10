@@ -1,4 +1,4 @@
-import say from './say.js';
-import hello from './hello.js';
+import say from './say.js'
+import hello from './hello.js'
 
-export { say, hello };
+export { say, hello }

@@ -5,11 +5,17 @@
     "es6": true
   },
   "parser": "babel-eslint",
+  "extends": [
+    "standard"
+  ],
   "rules": {
     "strict": 1,
     "comma-dangle": [1, "never"],
-    "semi": [2, "always"],
+    "semi": [2, "never"],
     "quotes": [2, "single"],
-    "indent": [2, 2]
+    "indent": [2, 2],
+    "no-multi-spaces": 0,
+    "no-void": 2,
+    "prefer-const": 0
   }
 }
