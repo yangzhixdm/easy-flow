@@ -2,7 +2,7 @@
   "name": "easy-flow",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
     "start": "rollup -c rollup.config.js -w"
   },
@@ -33,5 +33,8 @@
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "core-js": "^2.6.11"
   }
 }

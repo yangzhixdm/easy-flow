@@ -1,4 +1,4 @@
-import say from './say.js'
-import hello from './hello.js'
+import Output from './core/output-port'
 
-export { say, hello }
+const output = new Output(1, 2)
+output.render()
