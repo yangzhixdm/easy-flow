@@ -4,17 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "rollup -c rollup.config.js -w"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yangzhixdm/easy-flow.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "kevin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/yangzhixdm/easy-flow/issues"
   },
-  "homepage": "https://github.com/yangzhixdm/easy-flow#readme"
+  "homepage": "https://github.com/yangzhixdm/easy-flow#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "babel-eslint": "^10.1.0",
+    "rollup": "^2.33.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
 }
