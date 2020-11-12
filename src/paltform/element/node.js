@@ -1,10 +1,13 @@
 import SvgHelper from '../../share/svg'
 
+let nodeUuid = 0
+
 /**
  * node class
  */
 class Node {
   constructor (id, type, text, x, y) {
+    this.elementId = id || `nodeId-${++nodeUuid}`
     this.active = false
     this.hovering = false
     this.nodeId = id
@@ -14,6 +17,7 @@ class Node {
     this.type = type
 
     this.create()
+    this.event()
   }
 
   /**
@@ -56,6 +60,20 @@ class Node {
     svg.appendChild(domText)
     this.svg = svg
     return svg
+  }
+
+  event () {
+    this.svg.addEventListener('click', () => {
+      console.log('click')
+    })
+  }
+
+  render () {
+  }
+
+  update () {
+    // 触发watcher更新
+    this.watcher.update()
   }
 }
 

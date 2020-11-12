@@ -1,5 +1,5 @@
 import Layout from './layout'
-import factory from '../element/node-factory'
+import nodeFactory from '../element/node-factory'
 import LineContainer from '../element/line-container'
 import Line from '../element/line'
 
@@ -31,9 +31,10 @@ class DefaultLayout extends Layout {
       this.pushLine(new Line(from, to, this.nodesObj[from], this.nodesObj[to]))
     })
 
+    // TODO: 放入到layout中，那么说明产生了依赖，则需要绑定到dep中
     // 将节点加入到layout布局中
     this.nodes.forEach(({ id, type, text, x, y }) => {
-      this.push(factory(id, type, text, x, y))
+      this.push(nodeFactory.facotry(id, type, text, x, y))
     })
   }
 
