@@ -24,6 +24,10 @@ export default class Line {
     const endX = toNode.x + 50
     const endY = toNode.y
 
-    return `M${startX} ${startY} C ${startX + 50} ${startY + 10}, ${endX - 50} ${endY - 10}, ${endX} ${endY}`
+    const distanceX = toNode.x - fromNode.x
+    const distanceY = toNode.y - fromNode.y
+    // TODO: 后续考虑修改为比例
+    const extra = 50
+    return `M${startX} ${startY} C ${startX + (distanceX / 2)} ${startY + (distanceY / 2) - extra}, ${endX - (distanceX / 2)} ${endY - (distanceY / 2) + extra}, ${endX} ${endY}`
   }
 }
