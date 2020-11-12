@@ -1,6 +1,36 @@
 <html>
-  <head></head>
+  <head><meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>更美好AI世界</title>
   <body>
+    <div id="easy-flow"></div>
     <script src="../build/bundle.js"></script>
+    <script>
+      let easyFlow = new EasyFlow('easy-flow', {
+        nodes: [
+          {
+            id: 1,
+            type: 'api',
+            text: '开始',
+            x: 100,
+            y: 100
+          },
+          {
+            id: 2,
+            type: 'clarify',
+            text: '结束',
+            x: 100,
+            y: 200
+          }
+        ],
+        lines: [
+          {
+            from: 1,
+            to: 2
+          }
+        ]
+      })
+    </script>
   </body>
 <html>

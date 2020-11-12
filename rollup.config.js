@@ -8,7 +8,8 @@ export default {
   input: 'src/main.js',
   output: {
     file: 'build/bundle.js',
-    format: 'umd'
+    format: 'umd',
+    name: 'EasyFlow'
   },
   plugins: [
     postcss({

@@ -1,3 +1,15 @@
 .easy-flow {
-  background: red;
+  background-repeat: repeat;
+  user-select: none;
+}
+.easy-flow-node {
+  cursor: pointer;
+}
+.easy-flow-clarify-rect {
+  fill: red;
+  stroke: #eeeeee;
+  color: red;
+}
+.easy-flow-clarify-text {
+  color: #fff;
 }
