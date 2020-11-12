@@ -15,6 +15,8 @@ class Node {
     this.x = x
     this.y = y
     this.type = type
+    this.svgRect = null
+    this.svgText = null
 
     this.create()
     this.event()
@@ -34,7 +36,7 @@ class Node {
 
   create () {
     const svg = SvgHelper.draw('g', { id: this.generateId(), class: this.generateCalssList() })
-    const domRect = SvgHelper.draw('rect',
+    const domRect = this.svgRect = SvgHelper.draw('rect',
       {
         class: `easy-flow-${this.type}-rect`,
         stroke: '#cccccc',
@@ -48,7 +50,7 @@ class Node {
         y: this.y
       }
     )
-    const domText = SvgHelper.draw('text', {
+    const domText = this.svgText =  SvgHelper.draw('text', {
       class: `easy-flow-node-text easy-flow-${this.type}-text`,
       width: 100,
       height: 40,
@@ -64,11 +66,21 @@ class Node {
 
   event () {
     this.svg.addEventListener('click', () => {
+      this.render()
       console.log('click')
     })
   }
 
   render () {
+    SvgHelper.update(this.svgRect, {
+      x: 300,
+      y: 300
+    })
+
+    SvgHelper.update(this.svgText, {
+      x: 300,
+      y: 300
+    })
   }
 
   update () {
