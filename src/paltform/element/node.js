@@ -72,6 +72,7 @@ class Node {
   }
 
   render () {
+    // render
     SvgHelper.update(this.svgRect, {
       x: 300,
       y: 300
