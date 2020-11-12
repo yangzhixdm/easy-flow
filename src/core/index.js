@@ -14,8 +14,6 @@ class EasyFlow {
     this.config = config
     this.beforeCreate()
     this.layout = new Layout(id, nodes, lines)
-    this.layout.render()
-    this.layout.compose()
   }
 
   beforeCreate () {}

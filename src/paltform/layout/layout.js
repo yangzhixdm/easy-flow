@@ -6,17 +6,7 @@ class Layout {
     this.domId = domId
     this.dom = document.getElementById(domId)
     this.getter()
-  }
 
-  getter ({ clazz = 'easyflow', fillColor = '#fdfdfd', strokeColor = '#eeeeee', strokeWitth = 1, cellSize = 12 } = {}) {
-    this.clazz = clazz
-    this.fillColor = fillColor
-    this.strokeColor = strokeColor
-    this.strokeWitth = strokeWitth
-    this.cellSize = cellSize
-  }
-
-  render () {
     const container = this.dom
     container.classList.add(this.clazz)
     container.innerHTML = ''
@@ -52,6 +42,14 @@ class Layout {
     this.svg = svg.draw('svg', { width, height, transformOrigin: 'left top' })
 
     container.appendChild(this.svg)
+  }
+
+  getter ({ clazz = 'easyflow', fillColor = '#fdfdfd', strokeColor = '#eeeeee', strokeWitth = 1, cellSize = 12 } = {}) {
+    this.clazz = clazz
+    this.fillColor = fillColor
+    this.strokeColor = strokeColor
+    this.strokeWitth = strokeWitth
+    this.cellSize = cellSize
   }
 }
 
