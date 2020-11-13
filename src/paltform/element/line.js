@@ -11,6 +11,8 @@ export default class Line extends Element {
     this.elementId = `line-${++lineUuid}`
     this.from = from
     this.to = to
+    this.fromNode = fromNode
+    this.toNode = toNode
 
     this.svg = SvgHelper.draw('path', {
       d: this.generate(fromNode, toNode),
@@ -36,5 +38,11 @@ export default class Line extends Element {
     // TODO: 后续考虑修改为比例, 并且上下左右出线方案，需要考虑象限方案
     const extra = 50
     return `M${startX} ${startY - 2} C ${startX + (distanceX / 2)} ${startY + (distanceY / 2) - extra}, ${endX - (distanceX / 2)} ${endY - (distanceY / 2) + extra}, ${endX} ${endY + 2}`
+  }
+
+  render () {
+    SvgHelper.update(this.svg, {
+      d: this.generate(this.fromNode, this.toNode)
+    })
   }
 }

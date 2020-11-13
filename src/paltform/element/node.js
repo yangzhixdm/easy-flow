@@ -1,3 +1,4 @@
+import Element from './element'
 import SvgHelper from '../../share/svg'
 
 let nodeUuid = 0
@@ -5,8 +6,10 @@ let nodeUuid = 0
 /**
  * node class
  */
-class Node {
+class Node extends Element {
+
   constructor (id, type, text, x, y) {
+    super()
     this.elementId = id || `nodeId-${++nodeUuid}`
     this.active = false
     this.hovering = false
@@ -65,28 +68,66 @@ class Node {
   }
 
   event () {
-    this.svg.addEventListener('click', () => {
-      this.render()
-      console.log('click')
+    let boundingRect, x, y, offsetX, offsetY
+    // TODO: 多次绑定问题，节点越多绑定次数越多，应该放在layout进行绑定，然后移动固定的节点
+    this.svg.addEventListener('mousedown', (e) => {
+      boundingRect = this.svg.getBoundingClientRect()
+      x = e.pageX
+      y = e.pageY
+      offsetX = x - boundingRect.left
+      offsetY = y - boundingRect.top
+
+      document.addEventListener('mousemove', (e) => {
+        if (boundingRect) {
+          boundingRect = this.svg.getBoundingClientRect()
+          let distanceX = e.clientX - x
+          let distanceY = e.clientY - y
+          this.x = distanceX + x - offsetX
+          this.y = distanceY + y - offsetY
+          // this.moveNode()
+          this.update()
+        }
+      })
+
+      document.addEventListener('mouseup', (e) => {
+        if (boundingRect) {
+          boundingRect = null
+        }
+      })
+    })
+  }
+
+  moveNode () {
+    // TODO: 重叠顺序问题
+    SvgHelper.update(this.svgRect, {
+      x: this.x,
+      y: this.y
+    })
+
+    SvgHelper.update(this.svgText, {
+      x: this.x,
+      y: this.y
     })
   }
 
   render () {
-    // render
+    console.log('render node')
+
     SvgHelper.update(this.svgRect, {
-      x: 300,
-      y: 300
+      x: this.x,
+      y: this.y
     })
 
     SvgHelper.update(this.svgText, {
-      x: 300,
-      y: 300
+      x: this.x,
+      y: this.y
     })
+    // render
   }
 
   update () {
     // 触发watcher更新
-    this.watcher.update()
+    this.dep.update()
   }
 }
 

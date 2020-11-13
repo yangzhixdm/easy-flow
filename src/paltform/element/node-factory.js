@@ -1,23 +1,16 @@
 import Node from '../element/node'
 import Watcher from '../../core/watcher'
 
-let cacheWatcher = {}
+export default function (id, type, text, x, y) {
 
-export default {
-  facotry: (id, type, text, x, y) => {
+  const node = new Node(id, type, text, x, y)
+  // 不存在watcher
+  if (!node._watcher) {
+    node._watcher = new Watcher(node)
+  }
 
-    const node = new Node(id, type, text, x, y)
-    // 不存在watcher
-    if (!cacheWatcher[id]) {
-      const watcher = new Watcher(node)
-      cacheWatcher[watcher.id] = watcher
-    } else {
-      // 直接更新
-      const watcher = cacheWatcher[id]
-      watcher.run()
-    }
+  // TODO: 需要验重
+  node.dep.subs.push(node._watcher)
 
-    return node
-  },
-  cacheWatcher
+  return node
 }

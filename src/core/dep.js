@@ -13,6 +13,11 @@ class Dep {
     // TODO: 需要进行去重
     this.subs.push(watcher)
   }
+
+  notify () {
+    // notify update
+    this.update()
+  }
 }
 
 export default Dep
