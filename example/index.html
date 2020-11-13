@@ -11,7 +11,7 @@
         nodes: [
           {
             id: 1,
-            type: 'api',
+            type: 'start',
             text: '开始1',
             x: 500,
             y: 100
@@ -92,6 +92,13 @@
             text: '澄清节点11',
             x: 700,
             y: 500
+          },
+          {
+            id: 13,
+            type: 'hangup',
+            text: '挂机',
+            x: 700,
+            y: 600
           }
         ],
         lines: [
@@ -142,6 +149,10 @@
           {
             from: 11,
             to: 12
+          },
+          {
+            from: 12,
+            to: 13
           }
         ]
       })

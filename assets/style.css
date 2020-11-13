@@ -32,3 +32,16 @@
 .easy-flow-clarify-text {
   color: #fff;
 }
+
+
+.easy-flow-api-rect {
+  fill: #b0f3f0;
+}
+
+.easy-flow-hangup-rect {
+  fill: rgb(30, 168, 57);
+}
+
+.easy-flow-hangup-text {
+  color: #fff;
+}
