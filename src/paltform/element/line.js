@@ -19,7 +19,7 @@ export default class Line extends Element {
       class: 'easy-flow-line',
       fill: 'transparent',
       stroke: 'red',
-      strokeWidth: 2
+      strokeWidth: 1
     })
   }
 

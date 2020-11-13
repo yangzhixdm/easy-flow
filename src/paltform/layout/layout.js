@@ -1,4 +1,5 @@
 import svg from '../../share/svg'
+import Header from './header'
 
 class Layout {
 
@@ -12,10 +13,6 @@ class Layout {
     container.innerHTML = ''
     container.style.height = '6000px'
     container.style.width = '3000px'
-    container.style.display = 'grid'
-    container.style.gridTemplateColumns = '1fr'
-    container.style.gridTemplateRows = '60px 1fr'
-    container.style.gridTemplateAreas = '"header" "main"'
 
     const size = this.cellSize
     const image = svg.draw('svg', {
@@ -41,6 +38,11 @@ class Layout {
     const width = 3000
     this.svg = svg.draw('svg', { width, height, transformOrigin: 'left top' })
 
+    const header = new Header()
+    const tpl = header.render()
+    const placehoderNode = document.createElement('div')
+    container.appendChild(placehoderNode)
+    placehoderNode.outerHTML = tpl
     container.appendChild(this.svg)
   }
 

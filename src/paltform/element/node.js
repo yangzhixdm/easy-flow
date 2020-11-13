@@ -69,6 +69,7 @@ class Node extends Element {
 
   event () {
     let boundingRect, x, y, offsetX, offsetY
+    let extra = 40
     // TODO: 多次绑定问题，节点越多绑定次数越多，应该放在layout进行绑定，然后移动固定的节点
     this.svg.addEventListener('mousedown', (e) => {
       boundingRect = this.svg.getBoundingClientRect()
@@ -83,7 +84,7 @@ class Node extends Element {
           let distanceX = e.clientX - x
           let distanceY = e.clientY - y
           this.x = distanceX + x - offsetX
-          this.y = distanceY + y - offsetY
+          this.y = distanceY + y - offsetY - extra
           // this.moveNode()
           this.update()
         }
