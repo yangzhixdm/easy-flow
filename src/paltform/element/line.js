@@ -1,5 +1,6 @@
 import SvgHelper from '../../share/svg'
 import Element from './element'
+import createRoute from './line-route'
 
 let lineUuid = 0
 
@@ -14,35 +15,48 @@ export default class Line extends Element {
     this.fromNode = fromNode
     this.toNode = toNode
 
-    this.svg = SvgHelper.draw('path', {
+    this.linePath = SvgHelper.draw('path', {
       d: this.generate(fromNode, toNode),
       class: 'easy-flow-line',
       fill: 'transparent',
       stroke: 'red',
       strokeWidth: 1
     })
+
+    this.arrow = SvgHelper.draw('path', {
+      d: this.generateArrow(fromNode, toNode),
+      class: 'easy-flow-line',
+      fill: 'red',
+      stroke: 'red',
+      strokeWidth: 1
+    })
+
+    this.svg = SvgHelper.draw('g', {
+      class: 'easy-flow-line-container'
+    })
+
+    this.svg.appendChild(this.linePath)
+    this.svg.appendChild(this.arrow)
   }
 
   /**
    * 生成曲线路径
    */
   generate (fromNode, toNode) {
-    // 获取节点坐标
-    const startX = fromNode.x + 50// 加元素宽度一半 TODO: 宽度可配置
-    const startY = fromNode.y + 40
-    const endX = toNode.x + 50
-    const endY = toNode.y
+    return createRoute.createLineRoute(fromNode, toNode)
+  }
 
-    const distanceX = toNode.x - fromNode.x
-    const distanceY = toNode.y - fromNode.y
-    // TODO: 后续考虑修改为比例, 并且上下左右出线方案，需要考虑象限方案
-    const extra = 50
-    return `M${startX} ${startY - 2} C ${startX + (distanceX / 2)} ${startY + (distanceY / 2) - extra}, ${endX - (distanceX / 2)} ${endY - (distanceY / 2) + extra}, ${endX} ${endY + 2}`
+  generateArrow (fromNode, toNode) {
+    return createRoute.createLineArrow(fromNode, toNode)
   }
 
   render () {
-    SvgHelper.update(this.svg, {
+    SvgHelper.update(this.linePath, {
       d: this.generate(this.fromNode, this.toNode)
+    })
+
+    SvgHelper.update(this.arrow, {
+      d: this.generateArrow(this.fromNode, this.toNode)
     })
   }
 }

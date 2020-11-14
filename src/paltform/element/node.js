@@ -9,6 +9,7 @@ let nodeUuid = 0
 class Node extends Element {
 
   constructor (id, type, text, x, y) {
+    // TODO: 多个节点是否需要检测碰撞，节点是否可以覆盖
     super()
     this.elementId = id || `nodeId-${++nodeUuid}`
     this.active = false

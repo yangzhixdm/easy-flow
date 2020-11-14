@@ -71,7 +71,19 @@ const arrayToObject = (array, key) =>
 
 const deepClone = (obj) => JSON.parse(JSON.stringify(obj))
 
+const angel = (x, y) => {
+  const angle = Math.atan2(y, x)
+  const theta = angle * (180 / Math.PI)
+
+  if (theta >= 0) {
+    return theta
+  } else {
+    return theta + 360
+  }
+}
+
 export default {
+  angel,
   kebab2camel,
   camel2kebab,
   isEqual,
