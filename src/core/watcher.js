@@ -1,3 +1,5 @@
+import queueWatcher from './scheduler'
+
 let uuid = 0
 /**
  * class Watcher
@@ -11,9 +13,9 @@ class Watcher {
   }
 
   update () {
-    this.run()
+    // this.run()
     // TODO: 批量操作
-    // watcherQueue(this)
+    queueWatcher(this)
   }
 
   run () {
