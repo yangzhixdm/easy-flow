@@ -7,21 +7,31 @@
     <div id="easy-flow"></div>
     <script src="../build/bundle.js"></script>
     <script>
+      EasyFlow.install('element', {
+        name: 'VirtualNode'
+      })
       let easyFlow = new EasyFlow('easy-flow', {
         nodes: [
           {
             id: 1,
-            type: 'start',
+            type: 'Node',
             text: '开始1',
             x: 200,
             y: 200
           },
           {
             id: 2,
-            type: 'clarify',
+            type: 'Node',
             text: '结束2',
             x: 200,
             y: 300
+          },
+          {
+            id: 3,
+            type: 'VirtualNode',
+            text: '结束3',
+            x: 200,
+            y: 400
           }
         ],
         lines: [
