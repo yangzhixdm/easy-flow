@@ -1,6 +1,6 @@
 import Layout from './layout'
-import nodeFactory from '../element/node-factory'
-import lineFactory from '../element/line-factory'
+import createNodeFn from '../platform/create-node'
+import createLineFn from '../platform/create-line'
 import LineContainer from '../element/line-container'
 
 class DefaultLayout extends Layout {
@@ -35,23 +35,24 @@ class DefaultLayout extends Layout {
   }
 
   renderLines () {
-    this.pushNode(this.lineContainer)
 
     /**
      * 更新line
      */
     this.lines.forEach((line) => {
-      const lineNode = lineFactory(line.from, line.to, this._nodeIntances[line.from], this._nodeIntances[line.to])
+      const lineNode = createLineFn(line.from, line.to, this._nodeIntances[line.from], this._nodeIntances[line.to])
       line.elementId = lineNode.elementId
       this.pushLine(lineNode)
     })
+
+    this.pushNode(this.lineContainer)
   }
 
   renderNodes () {
     // TODO: 放入到layout中，那么说明产生了依赖，则需要绑定到dep中
     // 将节点加入到layout布局中
     this.nodes.forEach(({ id, type, text, x, y }) => {
-      this.pushNode(nodeFactory(id, type, text, x, y))
+      this.pushNode(createNodeFn(id, type, text, x, y))
     })
   }
 

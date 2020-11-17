@@ -1,4 +1,4 @@
-import SvgHelper from '../../share/svg'
+import SvgHelper from '../share/svg'
 
 class LineContainer {
 

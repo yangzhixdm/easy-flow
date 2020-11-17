@@ -1,6 +1,4 @@
-import config from '../config'
-
-import Layout from '../paltform/layout/default-layout'
+import Layout from '../layout/default-layout'
 
 class EasyFlow {
 
@@ -11,7 +9,6 @@ class EasyFlow {
 
     this.id = id
     this.dom = document.getElementById(id)
-    this.config = config
     this.beforeCreate()
     this.layout = new Layout(id, nodes, lines)
   }

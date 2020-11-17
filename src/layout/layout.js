@@ -1,4 +1,4 @@
-import svg from '../../share/svg'
+import svg from '../share/svg'
 import Header from './header'
 
 class Layout {

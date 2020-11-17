@@ -1,3 +1,6 @@
+/**
+ * class Dep
+ */
 class Dep {
   constructor () {
     this.subs = []
@@ -12,11 +15,6 @@ class Dep {
   addSub (watcher) {
     // TODO: 需要进行去重
     this.subs.push(watcher)
-  }
-
-  notify () {
-    // notify update
-    this.update()
   }
 }
 

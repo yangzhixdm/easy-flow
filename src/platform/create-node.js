@@ -1,7 +1,7 @@
 import Node from '../element/node'
-import Watcher from '../../core/watcher'
+import Watcher from '../core/watcher'
 
-export default function (id, type, text, x, y) {
+export default function createNode (id, type, text, x, y) {
 
   const node = new Node(id, type, text, x, y)
   // 不存在watcher

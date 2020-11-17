@@ -1,6 +1,6 @@
-import SvgHelper from '../../share/svg'
+import SvgHelper from '../share/svg'
 import Element from './element'
-import createRoute from './line-route'
+import createRoute from '../platform/create-route'
 
 let lineUuid = 0
 

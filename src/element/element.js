@@ -1,4 +1,4 @@
-import Dep from '../../core/dep'
+import Dep from '../core/dep'
 
 /**
  * class ELement

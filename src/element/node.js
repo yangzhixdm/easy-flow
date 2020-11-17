@@ -1,5 +1,5 @@
 import Element from './element'
-import SvgHelper from '../../share/svg'
+import SvgHelper from '../share/svg'
 
 let nodeUuid = 0
 
@@ -86,7 +86,6 @@ class Node extends Element {
           let distanceY = e.clientY - y
           this.x = distanceX + x - offsetX
           this.y = distanceY + y - offsetY - extra
-          // this.moveNode()
           this.update()
         }
       })
@@ -99,22 +98,7 @@ class Node extends Element {
     })
   }
 
-  moveNode () {
-    // TODO: 重叠顺序问题
-    SvgHelper.update(this.svgRect, {
-      x: this.x,
-      y: this.y
-    })
-
-    SvgHelper.update(this.svgText, {
-      x: this.x,
-      y: this.y
-    })
-  }
-
   render () {
-    console.log('render node')
-
     SvgHelper.update(this.svgRect, {
       x: this.x,
       y: this.y
@@ -124,7 +108,6 @@ class Node extends Element {
       x: this.x,
       y: this.y
     })
-    // render
   }
 
   update () {

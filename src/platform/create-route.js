@@ -1,4 +1,4 @@
-import _ from '../../utils'
+import _ from '../utils'
 
 /**
  * create line route
