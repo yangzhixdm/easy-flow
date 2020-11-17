@@ -13,13 +13,11 @@ class Watcher {
   }
 
   update () {
-    // this.run()
-    // TODO: 批量操作
     queueWatcher(this)
   }
 
   run () {
-    // 调用render TODO: 进行批量调度
+    // invoke render
     this.el.render()
   }
 }
