@@ -1,4 +1,5 @@
 import Layout from '../layout/default-layout'
+import Event from '../event'
 
 class EasyFlow {
 
@@ -9,11 +10,9 @@ class EasyFlow {
 
     this.id = id
     this.dom = document.getElementById(id)
-    this.beforeCreate()
     this.layout = new Layout(id, nodes, lines)
+    this.event = new Event('layout')
   }
-
-  beforeCreate () {}
 }
 
 export default EasyFlow

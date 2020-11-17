@@ -23,7 +23,7 @@ class Node extends Element {
     this.svgText = null
 
     this.create()
-    this.event()
+    this.bindEvent()
   }
 
   /**
@@ -68,7 +68,7 @@ class Node extends Element {
     return svg
   }
 
-  event () {
+  bindEvent () {
     let boundingRect, x, y, offsetX, offsetY
     let extra = 40
     // TODO: 多次绑定问题，节点越多绑定次数越多，应该放在layout进行绑定，然后移动固定的节点
