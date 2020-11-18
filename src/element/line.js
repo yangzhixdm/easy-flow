@@ -1,4 +1,4 @@
-import SvgHelper from '../share/svg'
+import svgHelper from '../share/svg'
 import Element from './element'
 import createRoute from '../platform/create-route'
 
@@ -15,7 +15,7 @@ export default class Line extends Element {
     this.fromNode = fromNode
     this.toNode = toNode
 
-    this.linePath = SvgHelper.draw('path', {
+    this.linePath = svgHelper.draw('path', {
       d: this.generate(fromNode, toNode),
       class: 'easy-flow-line',
       fill: 'transparent',
@@ -23,7 +23,7 @@ export default class Line extends Element {
       strokeWidth: 1
     })
 
-    this.arrow = SvgHelper.draw('path', {
+    this.arrow = svgHelper.draw('path', {
       d: this.generateArrow(fromNode, toNode),
       class: 'easy-flow-line',
       fill: 'red',
@@ -31,8 +31,8 @@ export default class Line extends Element {
       strokeWidth: 1
     })
 
-    this.svg = SvgHelper.draw('g', {
-      class: 'easy-flow-line-container'
+    this.svg = svgHelper.draw('g', {
+      class: 'easy-flow-line__item-container'
     })
 
     this.svg.appendChild(this.linePath)
@@ -50,12 +50,12 @@ export default class Line extends Element {
     return createRoute.createLineArrow(fromNode, toNode)
   }
 
-  render () {
-    SvgHelper.update(this.linePath, {
+  render (svgHelper) {
+    svgHelper.update(this.linePath, {
       d: this.generate(this.fromNode, this.toNode)
     })
 
-    SvgHelper.update(this.arrow, {
+    svgHelper.update(this.arrow, {
       d: this.generateArrow(this.fromNode, this.toNode)
     })
   }

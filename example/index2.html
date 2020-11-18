@@ -8,7 +8,11 @@
     <script src="../build/bundle.js"></script>
     <script>
       EasyFlow.install('element', {
-        name: 'VirtualNode'
+        name: 'VirtualNode',
+        render (svgHelper) {
+          console.log(svgHelper)
+          console.log('render virtual-node')
+        }
       })
       let easyFlow = new EasyFlow('easy-flow', {
         nodes: [
@@ -38,6 +42,10 @@
           {
             from: 1,
             to: 2
+          },
+          {
+            from: 1,
+            to: 3
           }
         ]
       })

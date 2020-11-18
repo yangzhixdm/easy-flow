@@ -8,17 +8,19 @@ let nodeUuid = 0
  */
 class Node extends Element {
 
-  constructor (id, type, text, x, y) {
+  constructor (options) {
     // TODO: 多个节点是否需要检测碰撞，节点是否可以覆盖
-    super()
-    this.elementId = id || `nodeId-${++nodeUuid}`
-    this.active = false
-    this.hovering = false
-    this.nodeId = id
-    this.text = text
-    this.x = x
-    this.y = y
-    this.type = type
+    super(options)
+    this.init(options)
+  }
+
+  init (options) {
+    this.x = options.x
+    this.y = options.y
+    this.elementId = options.id || `nodeId-${++nodeUuid}`
+    this.nodeId = options.id
+    this.text = options.text
+    this.type = options.type
     this.svgRect = null
     this.svgText = null
 
@@ -98,13 +100,13 @@ class Node extends Element {
     })
   }
 
-  render () {
-    SvgHelper.update(this.svgRect, {
+  render (svgHelper) {
+    svgHelper.update(this.svgRect, {
       x: this.x,
       y: this.y
     })
 
-    SvgHelper.update(this.svgText, {
+    svgHelper.update(this.svgText, {
       x: this.x,
       y: this.y
     })

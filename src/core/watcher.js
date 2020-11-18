@@ -1,4 +1,5 @@
 import queueWatcher from './scheduler'
+import svgHelper from '../share/svg'
 
 let uuid = 0
 /**
@@ -18,7 +19,7 @@ class Watcher {
 
   run () {
     // invoke render
-    this.el.render()
+    this.el.render(svgHelper)
   }
 }
 

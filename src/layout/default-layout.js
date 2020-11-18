@@ -51,8 +51,8 @@ class DefaultLayout extends Layout {
   renderNodes () {
     // TODO: 放入到layout中，那么说明产生了依赖，则需要绑定到dep中
     // 将节点加入到layout布局中
-    this.nodes.forEach(({ id, type, text, x, y }) => {
-      this.pushNode(createNodeFn(id, type, text, x, y))
+    this.nodes.forEach((node) => {
+      this.pushNode(createNodeFn(node))
     })
   }
 

@@ -2,12 +2,12 @@ import Node from '../element/node'
 import Watcher from '../core/watcher'
 import ctor from '../core/ctor'
 
-export default function createNode (id, type, text, x, y) {
+export default function createNode (options) {
   let node
-  if (ctor.get(type)) {
-    node = new (ctor.get(type))(id, type, text, x, y)
+  if (ctor.get(options.type)) {
+    node = new (ctor.get(options.type))(options)
   } else {
-    node = new Node(id, type, text, x, y)
+    node = new Node(options)
   }
   // 不存在watcher
   if (!node._watcher) {
